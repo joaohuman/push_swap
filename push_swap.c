@@ -6,12 +6,11 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/25 19:43:37 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/25 22:32:31 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
-#include <stdio.h>
 
 int	is_number(const char *nbr)
 {
@@ -64,14 +63,15 @@ int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 		return (-1);
 	i = 0;
 	stacks->size_a = argc - 1;
+	stacks->size_b = 0;
 	while (i < stacks->size_a)
 	{
 		if (!is_number(argv[argc - 1 - i]))
 			return (printf("não é numerico\n"), 1);
 		else if (is_number(argv[argc - 1 - i]) == 2)
 			return (printf("Existem sinais demais para um dos números"), 1);
-		stacks->stack_a[i] = ft_stoi(argv[argc - 1 - i]);
-		if (stacks->stack_a[i] == 0)
+		stacks->stack_a[argc - 2 - i] = ft_stoi(argv[argc - 1 - i]);
+		if (stacks->stack_a[argc - 2 - i] == 0)
 			return (printf("eh igual a zero\n"), 1);
 		i++;
 	}
@@ -89,11 +89,11 @@ int	is_ordenated(t_stacks stacks)
 	while (i < stacks.size_a)
 	{
 		j = i + 1;
-		if (stacks.stack_a[i] < stacks.stack_a[j])
+		if (stacks.stack_a[i] < stacks.stack_a[j] && stacks.stack_a[j])
 			return (1);
 		i++;
 	}
-	return (printf("Numeros ja ordenados") , 0);
+	return (printf("Numeros ja ordenados"), 0);
 }
 
 int	main(int argc, char **argv)

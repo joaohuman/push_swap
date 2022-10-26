@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:24:41 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/19 22:46:33 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:53:19 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	overflow(int signal, long x)
 {
 	if (x > 2147483648 || (x == 2147483648 && signal == 1))
-		return (1);
+		return (printf("É permitido apenas numeros tipo int\n"), 1);
 	else
 		return (0);
 }

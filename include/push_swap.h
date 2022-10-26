@@ -6,13 +6,14 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/24 21:25:49 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:52:11 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include<stdlib.h>
+# include <stdio.h>
 
 typedef struct s_stacks
 {
