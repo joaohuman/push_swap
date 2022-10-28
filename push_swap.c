@@ -6,26 +6,11 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/25 22:32:31 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:12:18 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
-
-int	is_number(const char *nbr)
-{
-	if (*nbr == '-' || *nbr == '+')
-		nbr++;
-	if (*nbr == '-' || *nbr == '+')
-		return (2);
-	while (*nbr)
-	{
-		if (*nbr < '0' || *nbr > '9')
-			return (0);
-		nbr++;
-	}
-	return (1);
-}
+#include "push_swap.h"
 
 int	is_duplicated(t_stacks *stack)
 {
@@ -66,9 +51,9 @@ int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 	stacks->size_b = 0;
 	while (i < stacks->size_a)
 	{
-		if (!is_number(argv[argc - 1 - i]))
+		if (!ft_is_number(argv[argc - 1 - i]))
 			return (printf("não é numerico\n"), 1);
-		else if (is_number(argv[argc - 1 - i]) == 2)
+		else if (ft_is_number(argv[argc - 1 - i]) == 2)
 			return (printf("Existem sinais demais para um dos números"), 1);
 		stacks->stack_a[argc - 2 - i] = ft_stoi(argv[argc - 1 - i]);
 		if (stacks->stack_a[argc - 2 - i] == 0)
@@ -89,16 +74,17 @@ int	is_ordenated(t_stacks stacks)
 	while (i < stacks.size_a)
 	{
 		j = i + 1;
-		if (stacks.stack_a[i] < stacks.stack_a[j] && stacks.stack_a[j])
-			return (1);
+		if (stacks.stack_a[i] > stacks.stack_a[j] && stacks.stack_a[j])
+			return (0);
 		i++;
 	}
-	return (printf("Numeros ja ordenados"), 0);
+	return (printf("Numeros ja ordenados"), 1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
+	int i = 0;
 
 	if (argc > 1024 || argc == 1)
 		return (1);
@@ -106,9 +92,18 @@ int	main(int argc, char **argv)
 	if (make_stack_and_validate(&stacks, argv, argc))
 		return (1);
 	if (is_ordenated(stacks))
+		return(1);
 	//verificar se ja esta ordenada, caso sim, n faz nada
 	//verificar a qtd de itens e de acordo com o tal criar um algoritmo
 	//para ordenar pequenos numeros
+	//s_move(&stacks.stack_a, stacks.size_a, 'a');
+	ss_move(&stacks);
+	i = 0;
+	while(i < stacks.size_a)
+	{
+		printf("%i, ", stacks.stack_a[i]);
+		i++;
+	}
 	free(stacks.stack_a);
 	free(stacks.stack_b);
 	return (0);

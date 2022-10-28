@@ -6,11 +6,11 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:24:41 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/25 20:53:19 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/26 23:12:15 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 int	overflow(int signal, long x)
 {

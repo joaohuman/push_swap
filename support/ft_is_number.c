@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_is_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 21:09:51 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/26 23:12:07 by jvictor-         ###   ########.fr       */
+/*   Created: 2022/10/26 22:18:57 by jvictor-          #+#    #+#             */
+/*   Updated: 2022/10/27 20:38:07 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_bzero(void *ptr, size_t n)
+int	ft_is_number(const char *nbr)
 {
-	int	c;
-
-	c = 0;
-	while (c < (int)n)
+	if (*nbr == '-' || *nbr == '+')
+		nbr++;
+	if (*nbr == '-' || *nbr == '+')
+		return (2);
+	while (*nbr)
 	{
-		*(unsigned char *)ptr = '\0';
-		ptr++;
-		c++;
+		if (*nbr < '0' || *nbr > '9')
+			return (0);
+		nbr++;
 	}
+	return (1);
 }

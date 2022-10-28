@@ -6,11 +6,11 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:08:58 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/19 21:11:44 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/26 23:12:00 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
