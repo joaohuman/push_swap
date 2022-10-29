@@ -6,13 +6,13 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 22:17:35 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/28 20:08:52 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:06:24 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    s_move(int **stack_to_swap, int size, char c)
+void	s_move(int **stack_to_swap, int size, char c)
 {
     int temp;
 	int *stack;
@@ -26,7 +26,7 @@ void    s_move(int **stack_to_swap, int size, char c)
     printf("s%c\n", c);
 }
 
-void ss_move(t_stacks *stacks_to_swap)
+void	ss_move(t_stacks *stacks_to_swap)
 {
 	int temp;
 	int *stack;
@@ -49,4 +49,24 @@ void ss_move(t_stacks *stacks_to_swap)
 		stack[size - 2] = temp;
 	}
     printf("ss\n");
+}
+
+void	p_move(t_stacks *stacks_to_push, char c)
+{
+	int sizea = stacks_to_push->size_a;
+	int sizeb = stacks_to_push->size_b;
+	if (c == 'a' && sizea > 0)
+	{
+		stacks_to_push->stack_b[sizeb] = stacks_to_push->stack_a[sizea - 1];
+		stacks_to_push->stack_a[sizea] = 0;
+		stacks_to_push->size_a--;
+		stacks_to_push->size_b++;
+	}
+	else if (c == 'b' && sizeb > 0)
+	{
+		stacks_to_push->stack_a[sizea] = stacks_to_push->stack_b[sizeb - 1];
+		stacks_to_push->stack_b[sizeb - 1] = 0;
+		stacks_to_push->size_b--;
+		stacks_to_push->size_a++;
+	}
 }

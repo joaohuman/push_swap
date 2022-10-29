@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/28 20:09:31 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:07:04 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,23 @@ int	main(int argc, char **argv)
 	//verificar a qtd de itens e de acordo com o tal criar um algoritmo
 	//para ordenar pequenos numeros
 	//s_move(&stacks.stack_a, stacks.size_a, 'a');
-	ss_move(&stacks);
+	//ss_move(&stacks);
+	p_move(&stacks, 'a');
+	p_move(&stacks, 'a');
+	p_move(&stacks, 'a');
+	p_move(&stacks, 'a');
+	p_move(&stacks, 'a');
 	i = 0;
 	while(i < stacks.size_a)
 	{
 		printf("%i, ", stacks.stack_a[i]);
+		i++;
+	}
+	printf("----------------");
+	i = 0;
+	while(i < stacks.size_b)
+	{
+		printf("%i, ", stacks.stack_b[i]);
 		i++;
 	}
 	free(stacks.stack_a);
