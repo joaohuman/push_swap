@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/28 20:44:43 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:42:15 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int		ft_is_number(const char *nbr);
 int		make_stack_and_validate(t_stacks *stacks, char **argv, int argc);
 int		ft_stoi(const char *ptr);
 void    s_move(int **stack_to_swap, int size, char c);
-void ss_move(t_stacks *stacks_to_swap);
+void	ss_move(t_stacks *stacks_to_swap);
 void	p_move(t_stacks *stacks_to_push, char c);
+void	r_move(int **stack_to_rotate, int size, char c);
+void	rr_move(t_stacks *stacks_to_rotate);
+void	revr_move(int **stack_to_rotate, int size, char c);
+void	rrr_move(t_stacks *stacks_to_revrotate);
+
 #endif
