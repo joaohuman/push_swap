@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/29 16:17:48 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/29 21:53:59 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 	return (0);
 }
 
-int	is_ordenated(t_stacks stacks)
+int	is_ordenated(t_stacks *stacks)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < stacks.size_a)
+	while (i < stacks->size_a)
 	{
 		j = i + 1;
-		if (stacks.stack_a[i] > stacks.stack_a[j] && stacks.stack_a[j])
+		if (stacks->stack_a[i] > stacks->stack_a[j] && stacks->stack_a[j])
 			return (0);
 		i++;
 	}
@@ -101,6 +101,36 @@ void	print_stack(t_stacks stacks)
 	printf("\n----------------\n");
 }
 
+void	normalization(t_stacks *stacks)
+{
+	int	i;
+	int	j;
+	int	cont;
+
+	i = 0;
+	while (i < stacks->size_a)
+	{
+		j = 0;
+		cont = 0;
+		while (j < stacks->size_a)
+		{
+			if (stacks->stack_a[i] > stacks->stack_a[j])
+				cont++;
+			j++;
+		}
+		stacks->stack_b[i] = cont + 1;
+		i++;
+	}
+	i = 0;
+	print_stack(*stacks);
+	while (i < stacks->size_a)
+	{
+		stacks->stack_a[i] = stacks->stack_b[i];
+		stacks->stack_b[i] = 0;
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
@@ -111,37 +141,39 @@ int	main(int argc, char **argv)
 	//fazer a stack e validar ela
 	if (make_stack_and_validate(&stacks, argv, argc))
 		return (1);
-	if (is_ordenated(stacks))
+	if (is_ordenated(&stacks))
 		return(1);
+	print_stack(stacks);
+	normalization(&stacks);
 	print_stack(stacks);
 	//verificar se ja esta ordenada, caso sim, n faz nada
 	//verificar a qtd de itens e de acordo com o tal criar um algoritmo
 	//para ordenar pequenos numeros
-	p_move(&stacks, 'b');
-	print_stack(stacks);
-	p_move(&stacks, 'b');
-	print_stack(stacks);
-	p_move(&stacks, 'b');
-	print_stack(stacks);
-	s_move(&stacks.stack_a, stacks.size_a, 'a');
-	print_stack(stacks);
+	//p_move(&stacks, 'b');
+	//print_stack(stacks);
+	//p_move(&stacks, 'b');
+	//print_stack(stacks);
+	//p_move(&stacks, 'b');
+	//print_stack(stacks);
+	//s_move(&stacks.stack_a, stacks.size_a, 'a');
+	//print_stack(stacks);
 	//r_move(&stacks.stack_a, stacks.size_a, 'a');
 	//revr_move(&stacks.stack_a, stacks.size_a, 'a');
 	//revr_move(&stacks.stack_a, stacks.size_a, 'a');
 	//revr_move(&stacks.stack_a, stacks.size_a, 'a');
 	//revr_move(&stacks);
 	//revr_move(&stacks);
-	rr_move(&stacks);
-	print_stack(stacks);
-	rr_move(&stacks);
-	print_stack(stacks);
-	rr_move(&stacks);
-	print_stack(stacks);
-	rrr_move(&stacks);
-	print_stack(stacks);
-	ss_move(&stacks);
-	print_stack(stacks);
-	free(stacks.stack_a);
-	free(stacks.stack_b);
+	//print_stack(stacks);
+	//rr_move(&stacks);
+	//rr_move(&stacks);
+	//print_stack(stacks);
+	//rr_move(&stacks);
+	//print_stack(stacks);
+	//rrr_move(&stacks);
+	//print_stack(stacks);
+	//ss_move(&stacks);
+	//print_stack(stacks);
+	//free(stacks.stack_a);
+	//free(stacks.stack_b);
 	return (0);
 }
