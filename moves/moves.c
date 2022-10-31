@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 22:17:35 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/29 16:18:05 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:21:10 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	rr_move(t_stacks *stacks_to_rotate)
 {
 	int sizea;
 	int sizeb;
-	int valor;
 	
 	sizea = stacks_to_rotate->size_a;
 	sizeb = stacks_to_rotate->size_b;

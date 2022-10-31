@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/29 15:42:15 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:25:58 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 
 typedef struct s_stacks
 {
@@ -35,5 +36,11 @@ void	r_move(int **stack_to_rotate, int size, char c);
 void	rr_move(t_stacks *stacks_to_rotate);
 void	revr_move(int **stack_to_rotate, int size, char c);
 void	rrr_move(t_stacks *stacks_to_revrotate);
+void	sort_two(t_stacks *stacks, char c);
+void	sort_three(t_stacks *s);
+void	sort_five(t_stacks *s);
+void	print_stack(t_stacks stacks);
+void	normalization(t_stacks *stacks);
+
 
 #endif
