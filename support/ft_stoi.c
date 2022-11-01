@@ -6,21 +6,21 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:24:41 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/26 23:12:15 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 19:52:13 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	overflow(int signal, long x)
+int	overflow(int signal, long n)
 {
-	if (x > 2147483648 || (x == 2147483648 && signal == 1))
-		return (printf("É permitido apenas numeros tipo int\n"), 1);
+	if (n > 2147483648 || (n == 2147483648 && signal == 1))
+		return (1);
 	else
 		return (0);
 }
 
-int	ft_stoi(const char *ptr)
+long int	ft_stoi(const char *ptr)
 {
 	int			s;
 	long int	n;

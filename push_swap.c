@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/30 23:37:12 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 21:33:24 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	is_duplicated(t_stacks *stack)
 int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 {
 	int	i;
+	long int temp;
 
 	stacks->stack_a = ft_calloc(argc, sizeof(int));
 	stacks->stack_b = ft_calloc(argc, sizeof(int));
@@ -55,18 +56,12 @@ int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 			return (write(2, "Error\n", 6), 1);
 		else if (ft_is_number(argv[argc - 1 - i]) == 2)
 			return (write(2, "Error\n", 6), 1);
-		stacks->stack_a[i] = ft_stoi(argv[argc - 1 - i]);
+		temp = ft_stoi(argv[argc - 1 - i]);
+		if (temp >= 2147483648 || temp <= -2147483648)
+			return (write(2, "Error\n", 6), 1);
+		stacks->stack_a[i] = (int)temp;
 		i++;
 	}
-	//while (i < stacks->size_a)
-	//{
-	//	if (!ft_is_number(argv[argc - 1 - i]))
-	//		return (printf("não é numerico\n"), 1);
-	//	else if (ft_is_number(argv[argc - 1 - i]) == 2)
-	//		return (printf("Existem sinais demais para um dos números"), 1);
-	//	stacks->stack_a[argc - 2 - i] = ft_stoi(argv[argc - 1 - i]);
-	//	i++;
-	//}
 	if (is_duplicated(stacks))
 		return (write(2, "Error\n", 6), 1);
 	return (0);
@@ -85,8 +80,6 @@ int	is_ordenated(t_stacks *stacks)
 			return (0);
 		i++;
 	}
-	free(stacks->stack_a);
-	free(stacks->stack_b);
 	return (1);
 }
 
@@ -140,56 +133,31 @@ void	normalization(t_stacks *stacks)
 	}
 }
 
+void	free_exit(t_stacks *s)
+{
+	free(s->stack_a);
+	free(s->stack_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
 	if (argc > 1024 || argc < 3)
 		return (1);
-	//fazer a stack e validar ela
-	if (make_stack_and_validate(&stacks, argv, argc))
+	if (make_stack_and_validate(&stacks, argv, argc) || 
+		is_ordenated(&stacks))
+	{
+		free_exit(&stacks);
 		return (1);
-	//print_stack(stacks);
-	if (is_ordenated(&stacks))
-		return(0);
-	//print_stack(stacks);
+	}
 	normalization(&stacks);
-	//print_stack(stacks);
 	if (stacks.size_a == 2)
 		sort_two(&stacks, 'a');
 	else if (stacks.size_a == 3)
 		sort_three(&stacks);
 	else if (stacks.size_a == 5)
-		sort_five(&stacks);
-	//print_stack(stacks);
-	//verificar se ja esta ordenada, caso sim, n faz nada
-	//verificar a qtd de itens e de acordo com o tal criar um algoritmo
-	//para ordenar pequenos numeros
-	//p_move(&stacks, 'b');
-	//print_stack(stacks);
-	//p_move(&stacks, 'b');
-	//print_stack(stacks);
-	//p_move(&stacks, 'b');
-	//print_stack(stacks);
-	//s_move(&stacks.stack_a, stacks.size_a, 'a');
-	//print_stack(stacks);
-	//r_move(&stacks.stack_a, stacks.size_a, 'a');
-	//revr_move(&stacks.stack_a, stacks.size_a, 'a');
-	//revr_move(&stacks.stack_a, stacks.size_a, 'a');
-	//revr_move(&stacks.stack_a, stacks.size_a, 'a');
-	//revr_move(&stacks);
-	//revr_move(&stacks);
-	//print_stack(stacks);
-	//rr_move(&stacks);
-	//rr_move(&stacks);
-	//print_stack(stacks);
-	//rr_move(&stacks);
-	//print_stack(stacks);
-	//rrr_move(&stacks);
-	//print_stack(stacks);
-	//ss_move(&stacks);
-	//print_stack(stacks);
-	free(stacks.stack_a);
-	free(stacks.stack_b);
+		sort_four_five(&stacks);
+	free_exit(&stacks);
 	return (0);
 }
