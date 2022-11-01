@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 21:33:24 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:01:35 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 		else if (ft_is_number(argv[argc - 1 - i]) == 2)
 			return (write(2, "Error\n", 6), 1);
 		temp = ft_stoi(argv[argc - 1 - i]);
-		if (temp >= 2147483648 || temp <= -2147483648)
+		if (temp > INT_MAX || temp < INT_MIN)
 			return (write(2, "Error\n", 6), 1);
 		stacks->stack_a[i] = (int)temp;
 		i++;

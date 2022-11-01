@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:14:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 21:01:56 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:01:31 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,18 @@ void	sort_four_five(t_stacks *s)
 	int i;
 
 	i = 0;
-	while (i < s->size_a)
+	while (i < 5)
 	{
-		if (s->stack_a[s->size_a - 1 - i] > 3)
+		if (s->stack_a[s->size_a - 1] > 3)
 			p_move(s, 'b');
 		else
 			r_move(&s->stack_a, s->size_a, 'a');
 		i++;
 	}
 	sort_three(s);
-	print_stack(*s);
+	sort_two(s, 'b');
+	p_move(s, 'a');
+	r_move(&s->stack_a, s->size_a, 'a');
+	p_move(s, 'a');
+	r_move(&s->stack_a, s->size_a, 'a');
 }
