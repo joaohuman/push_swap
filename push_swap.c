@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 23:21:45 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:26:38 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ void	normalization(t_stacks *stacks)
 		i++;
 	}
 	i = 0;
-	//print_stack(*stacks);
 	while (i < stacks->size_a)
 	{
 		stacks->stack_a[i] = stacks->stack_b[i];
