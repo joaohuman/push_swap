@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:14:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 23:01:31 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:17:37 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort_two(t_stacks *stacks, char c)
 {
-	if (stacks->stack_a[0] < stacks->stack_a[1] && c == 'a')
+	if (stacks->stack_a[0] < stacks->stack_a[1] && c == 'a' && stacks->size_a == 2)
 		r_move(&stacks->stack_a, stacks->size_a, 'a');
-	if (stacks->stack_b[0] < stacks->stack_b[1] && c == 'b')
+	if (stacks->stack_b[0] < stacks->stack_b[1] && c == 'b' && stacks->size_b == 2)
 		r_move(&stacks->stack_b, stacks->size_b, 'b');
 }
 
@@ -142,6 +142,10 @@ void	sort_four_five(t_stacks *s)
 	sort_two(s, 'b');
 	p_move(s, 'a');
 	r_move(&s->stack_a, s->size_a, 'a');
-	p_move(s, 'a');
-	r_move(&s->stack_a, s->size_a, 'a');
+	if (s->size_b == 1)
+	{
+		p_move(s, 'a');
+		r_move(&s->stack_a, s->size_a, 'a');
+	}
+//	print_stack(*s);
 }

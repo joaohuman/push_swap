@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 23:03:24 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:18:57 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	is_duplicated(t_stacks *stack)
 		{
 			if (stack->stack_a[i] == stack->stack_a[j])
 			{
-				printf("Existem itens duplicados\n");
-				return (1);
+				return (write(2, "Error\n", 6), 1);
 			}
 			j++;
 		}
