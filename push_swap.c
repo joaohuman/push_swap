@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 23:18:57 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:21:45 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_duplicated(t_stacks *stack)
 		{
 			if (stack->stack_a[i] == stack->stack_a[j])
 			{
-				return (write(2, "Error\n", 6), 1);
+				return (1);
 			}
 			j++;
 		}
