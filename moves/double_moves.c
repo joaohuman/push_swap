@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:29:29 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/11/02 00:35:40 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/02 01:28:06 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ss_move(t_stacks *stacks_to_swap)
 		stack[size - 1] = stack[size - 2];
 		stack[size - 2] = temp;
 	}
-	write(2, "ss\n", 3);
+	write(1, "ss\n", 3);
 }
 
 void	rr_move(t_stacks *stacks_to_rotate)
@@ -48,7 +48,7 @@ void	rr_move(t_stacks *stacks_to_rotate)
 		r_move(&stacks_to_rotate->stack_a, stacks_to_rotate->size_a, '\0');
 	if (sizeb > 1 && stacks_to_rotate->stack_b[sizeb] == 0)
 		r_move(&stacks_to_rotate->stack_b, stacks_to_rotate->size_b, '\0');
-	write(2, "rr\n", 3);
+	write(1, "rr\n", 3);
 }
 
 void	rrr_move(t_stacks *stacks_to_revrotate)
@@ -64,5 +64,5 @@ void	rrr_move(t_stacks *stacks_to_revrotate)
 	if (sizeb > 1 && stacks_to_revrotate->stack_b[sizeb] == 0)
 		revr_move(&stacks_to_revrotate->stack_b,
 			stacks_to_revrotate->size_b, '\0');
-	write(2, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }
