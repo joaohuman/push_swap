@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/11/01 23:45:45 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:28:00 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h>
 
 typedef struct s_stacks
 {
@@ -27,6 +26,8 @@ typedef struct s_stacks
 
 int				ft_is_number(const char *nbr);
 int				is_ordenated(t_stacks *stacks);
+int				is_duplicated(t_stacks *stack);
+void			free_exit(t_stacks *s);
 int				make_stack_and_validate(t_stacks *stacks,
 					char **argv, int argc);
 void			ft_bzero(void *ptr, size_t n);
@@ -44,7 +45,5 @@ void			sort_four_five(t_stacks *s);
 void			normalization(t_stacks *stacks);
 long int		ft_stoi(const char *ptr);
 void			radix(t_stacks *s);
-
-void			print_stack(t_stacks stacks);
 
 #endif

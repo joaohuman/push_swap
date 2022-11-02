@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 22:17:35 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/30 15:21:10 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:32:06 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	s_move(int **stack_to_swap, int size, char c)
 {
-    int temp;
-	int *stack;
+	int	temp;
+	int	*stack;
 
 	if (size < 2)
 		return ;
@@ -23,39 +23,16 @@ void	s_move(int **stack_to_swap, int size, char c)
 	temp = stack[size - 1];
 	stack[size - 1] = stack[size - 2];
 	stack[size - 2] = temp;
-    printf("s%c\n", c);
-}
-
-void	ss_move(t_stacks *stacks_to_swap)
-{
-	int temp;
-	int *stack;
-	int size;
-
-	stack = stacks_to_swap->stack_a;
-	size = stacks_to_swap->size_a;
-	if(size > 1)
-	{
-		temp = stack[size - 1];
-		stack[size - 1] = stack[size - 2];
-		stack[size - 2] = temp;
-	}
-	stack = stacks_to_swap->stack_b;
-	size = stacks_to_swap->size_b;
-	if(size > 1)
-	{
-		temp = stack[size - 1];
-		stack[size - 1] = stack[size - 2];
-		stack[size - 2] = temp;
-	}
-    printf("ss\n");
+	write(2, "s", 1);
+	write(2, &c, 1);
+	write(2, "\n", 1);
 }
 
 void	p_move(t_stacks *stacks_to_push, char c)
 {
-	int sizea;
-	int sizeb;
-	
+	int	sizea;
+	int	sizeb;
+
 	sizea = stacks_to_push->size_a;
 	sizeb = stacks_to_push->size_b;
 	if (c == 'b' && sizea > 0)
@@ -72,19 +49,21 @@ void	p_move(t_stacks *stacks_to_push, char c)
 		stacks_to_push->size_b--;
 		stacks_to_push->size_a++;
 	}
-	printf("p%c\n", c);
+	write(2, "p", 1);
+	write(2, &c, 1);
+	write(2, "\n", 1);
 }
 
 void	r_move(int **stack_to_rotate, int size, char c)
 {
-	int i;
-	int *stack;
+	int	i;
+	int	*stack;
 
 	stack = *stack_to_rotate;
 	if (size > 1 && stack[size] == 0)
 	{
 		i = size;
-		while(i > 0)
+		while (i > 0)
 		{
 			stack[i] = stack[i - 1];
 			i--;
@@ -93,33 +72,23 @@ void	r_move(int **stack_to_rotate, int size, char c)
 		stack[size] = 0;
 	}
 	if (c)
-		printf("r%c\n", c);
-}
-
-void	rr_move(t_stacks *stacks_to_rotate)
-{
-	int sizea;
-	int sizeb;
-	
-	sizea = stacks_to_rotate->size_a;
-	sizeb = stacks_to_rotate->size_b;
-	if (sizea > 1 && stacks_to_rotate->stack_a[sizea] == 0)
-		r_move(&stacks_to_rotate->stack_a, stacks_to_rotate->size_a, '\0');
-	if (sizeb > 1 && stacks_to_rotate->stack_b[sizeb] == 0)
-		r_move(&stacks_to_rotate->stack_b, stacks_to_rotate->size_b, '\0');
-	printf("rr\n");
+	{
+		write(2, "r", 1);
+		write(2, &c, 1);
+		write(2, "\n", 1);
+	}
 }
 
 void	revr_move(int **stack_to_rotate, int size, char c)
 {
-	int i;
-	int *stack;
+	int	i;
+	int	*stack;
 
 	stack = *stack_to_rotate;
 	if (size > 1 && stack[size] == 0)
 	{
 		i = 0;
-		while(i < size)
+		while (i < size)
 		{
 			if (stack[size] == 0)
 				stack[size] = stack[0];
@@ -129,19 +98,9 @@ void	revr_move(int **stack_to_rotate, int size, char c)
 		stack[size] = 0;
 	}
 	if (c)
-		printf("rr%c\n", c);
-}
-
-void	rrr_move(t_stacks *stacks_to_revrotate)
-{
-	int sizea;
-	int sizeb;
-
-	sizea = stacks_to_revrotate->size_a;
-	sizeb = stacks_to_revrotate->size_b;
-	if (sizea > 1 && stacks_to_revrotate->stack_a[sizea] == 0)
-		revr_move(&stacks_to_revrotate->stack_a, stacks_to_revrotate->size_a, '\0');
-	if (sizeb > 1 && stacks_to_revrotate->stack_b[sizeb] == 0)
-		revr_move(&stacks_to_revrotate->stack_b, stacks_to_revrotate->size_b, '\0');
-	printf("rrr\n");
+	{
+		write(2, "rr", 2);
+		write(2, &c, 1);
+		write(2, "\n", 1);
+	}
 }

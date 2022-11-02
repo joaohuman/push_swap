@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:14:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/11/01 23:28:11 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:18:22 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	sort_two(t_stacks *stacks, char c)
 {
-	if (stacks->stack_a[0] < stacks->stack_a[1] && c == 'a' && stacks->size_a == 2)
+	if (stacks->stack_a[0] < stacks->stack_a[1]
+		&& c == 'a' && stacks->size_a == 2)
 		r_move(&stacks->stack_a, stacks->size_a, 'a');
-	if (stacks->stack_b[0] < stacks->stack_b[1] && c == 'b' && stacks->size_b == 2)
+	if (stacks->stack_b[0] < stacks->stack_b[1]
+		&& c == 'b' && stacks->size_b == 2)
 		r_move(&stacks->stack_b, stacks->size_b, 'b');
 }
 
@@ -25,7 +27,8 @@ void	sort_three(t_stacks *s)
 	if (s->stack_a[0] == 3 && s->stack_a[1] == 1 && s->stack_a[2] == 2)
 		s_move(&s->stack_a, s->size_a, 'a');
 	else if (s->stack_a[0] == 1 && s->stack_a[1] == 2 && s->stack_a[2] == 3)
-	{	s_move(&s->stack_a, s->size_a, 'a');
+	{	
+		s_move(&s->stack_a, s->size_a, 'a');
 		revr_move(&s->stack_a, s->size_a, 'a');
 	}
 	else if (s->stack_a[0] == 2 && s->stack_a[1] == 1 && s->stack_a[2] == 3)
@@ -41,7 +44,7 @@ void	sort_three(t_stacks *s)
 
 void	sort_four_five(t_stacks *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 5)
@@ -65,8 +68,8 @@ void	sort_four_five(t_stacks *s)
 
 void	radix(t_stacks *s)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < s->size_a)

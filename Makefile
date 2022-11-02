@@ -7,8 +7,13 @@ SRCS = push_swap.c \
 		support/ft_calloc.c \
 		support/ft_bzero.c \
 		support/ft_stoi.c \
+		support/is_duplicated.c \
+		support/is_ordenated.c \
 		moves/moves.c \
-		ordenate/ordenate.c
+		moves/double_moves.c \
+		ordenate/ordenate.c \
+		ordenate/normalization.c
+
 NAME = push_swap
 OBJECTS = $(SRCS:.c=.o)
 

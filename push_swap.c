@@ -6,41 +6,16 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/11/01 23:03:30 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:26:02 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_duplicated(t_stacks *stack)
-{
-	int	i;
-	int	j;
-
-	if (stack->size_a <= 1)
-		return (1);
-	i = 0;
-	j = i + 1;
-	while (i < stack->size_a)
-	{
-		while (j < stack->size_a)
-		{
-			if (stack->stack_a[i] == stack->stack_a[j])
-			{
-				return (1);
-			}
-			j++;
-		}
-		i++;
-		j = i + 1;
-	}
-	return (0);
-}
-
 int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 {
-	int	i;
-	long int temp;
+	int			i;
+	long int	temp;
 
 	stacks->stack_a = ft_calloc(argc, sizeof(int));
 	stacks->stack_b = ft_calloc(argc, sizeof(int));
@@ -66,71 +41,6 @@ int	make_stack_and_validate(t_stacks *stacks, char **argv, int argc)
 	return (0);
 }
 
-int	is_ordenated(t_stacks *stacks)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < stacks->size_a)
-	{
-		j = i + 1;
-		if (stacks->stack_a[i] < stacks->stack_a[j] && stacks->stack_a[j])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	print_stack(t_stacks stacks)
-{
-	int i = 0;
-	printf("A: ");
-	while(i < stacks.size_a)
-	{
-		printf("%i, ", stacks.stack_a[i]);
-		i++;
-	}
-	i = 0;
-	printf("\n");
-	printf("B: ");
-	while(i < stacks.size_b)
-	{
-		printf("%i, ", stacks.stack_b[i]);
-		i++;
-	}
-	printf("\n----------------\n");
-}
-
-void	normalization(t_stacks *stacks)
-{
-	int	i;
-	int	j;
-	int	cont;
-
-	i = 0;
-	while (i < stacks->size_a)
-	{
-		j = 0;
-		cont = 0;
-		while (j < stacks->size_a)
-		{
-			if (stacks->stack_a[i] > stacks->stack_a[j])
-				cont++;
-			j++;
-		}
-		stacks->stack_b[i] = cont + 1;
-		i++;
-	}
-	i = 0;
-	while (i < stacks->size_a)
-	{
-		stacks->stack_a[i] = stacks->stack_b[i];
-		stacks->stack_b[i] = 0;
-		i++;
-	}
-}
-
 void	free_exit(t_stacks *s)
 {
 	free(s->stack_a);
@@ -143,8 +53,8 @@ int	main(int argc, char **argv)
 
 	if (argc > 1024 || argc < 3)
 		return (1);
-	if (make_stack_and_validate(&stacks, argv, argc) || 
-		is_ordenated(&stacks))
+	if (make_stack_and_validate(&stacks, argv, argc)
+		|| is_ordenated(&stacks))
 	{
 		free_exit(&stacks);
 		return (1);
@@ -158,7 +68,6 @@ int	main(int argc, char **argv)
 		sort_four_five(&stacks);
 	else
 		radix(&stacks);
-//	print_stack(stacks);
 	free_exit(&stacks);
 	return (0);
 }
