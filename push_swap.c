@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 23:26:38 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/01 23:03:30 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,9 @@ int	main(int argc, char **argv)
 		sort_three(&stacks);
 	else if (stacks.size_a == 4 || stacks.size_a == 5)
 		sort_four_five(&stacks);
+	else
+		radix(&stacks);
+//	print_stack(stacks);
 	free_exit(&stacks);
 	return (0);
 }

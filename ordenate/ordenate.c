@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:14:34 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/10/31 23:25:20 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/01 23:28:11 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,28 @@ void	sort_four_five(t_stacks *s)
 	{
 		p_move(s, 'a');
 		r_move(&s->stack_a, s->size_a, 'a');
+	}
+}
+
+void	radix(t_stacks *s)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < s->size_a)
+	{
+		j = s->size_a - 1;
+		while (j >= 0 && !is_ordenated(s) && s->size_a)
+		{
+			if (((s->stack_a[s->size_a - 1] >> i) & 1) == 0)
+				p_move(s, 'b');
+			else
+				r_move(&s->stack_a, s->size_a, 'a');
+			j--;
+		}
+		while (s->size_b != 0)
+			p_move(s, 'a');
+		i++;
 	}
 }
