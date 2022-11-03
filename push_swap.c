@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/11/02 00:26:02 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:50:01 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	t_stacks	stacks;
 
 	if (argc > 1024 || argc < 3)
-		return (1);
+		return (0);
 	if (make_stack_and_validate(&stacks, argv, argc)
 		|| is_ordenated(&stacks))
 	{
