@@ -6,7 +6,7 @@
 /*   By: jvictor- <jvictor-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:56:11 by jvictor-          #+#    #+#             */
-/*   Updated: 2022/11/05 11:09:19 by jvictor-         ###   ########.fr       */
+/*   Updated: 2022/11/05 14:29:43 by jvictor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,25 @@ void	free_exit(t_stacks *s)
 	free(s->stack_b);
 }
 
+int	check_args(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		if (!ft_is_number(argv[1]) || ft_is_number(argv[1]) == 2)
+			return (write(2, "Error\n", 6), 1);
+	}
+	if (argc > 1024 || argc < 3)
+		return (2);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
-	if (!ft_is_number(argv[1]) || ft_is_number(argv[1]) == 2)
-		return (write(2, "Error\n", 6), 1);
-	if (argc > 1024 || argc < 3)
+	if (check_args(argc, argv) == 1)
+		return (1);
+	if (check_args(argc, argv) == 2)
 		return (0);
 	if (make_stack_and_validate(&stacks, argv, argc)
 		|| is_ordenated(&stacks))
