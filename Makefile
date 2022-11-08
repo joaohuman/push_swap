@@ -19,7 +19,6 @@ OBJECTS = $(SRCS:.c=.o)
 
 #TARGETS
 all: $(NAME)
-#	./$(NAME) 1 4 3 6 5 9 8 7 66 55 44 0 -1231
 
 $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDE) $(OBJECTS) -o $(NAME)
